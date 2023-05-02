@@ -1,0 +1,46 @@
+version: '3.1'
+services:
+  ignition-instance:
+    image: inductiveautomation/ignition:8.1.26
+    restart: unless-stopped
+    container_name: ignition-test
+    ports:
+      - 9088:8088
+    volumes:
+      - ignition-vol:/usr/local/bin/ignition/data
+      - ignition-vol-jdbc:/usr/local/bin/ignition/user-lib/jdbc
+    environment:
+      - ACCEPT_IGNITION_EULA=Y
+      - GATEWAY_ADMIN_USERNAME=admin
+      - GATEWAY_ADMIN_PASSWORD=Delvalle534!
+      - IGNITION_EDITION=standard
+    links:
+      - "mysql-instance:db"
+
+  mysql-instance:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: unless-stopped
+    container_name: mysql-test
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql-vol:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: alcan464
+      MYSQL_DATABASE: autoqr
+      MYSQL_USER: ignition
+      MYSQL_PASSWORD: alcan464
+
+  adminer:
+    image: adminer
+    restart: unless-stopped
+    ports:
+      - 9080:8080
+    links:
+      - "mysql-instance:db"
+
+volumes:
+  ignition-vol:
+  ignition-vol-jdbc:
+  mysql-vol:
