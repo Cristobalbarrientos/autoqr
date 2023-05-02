@@ -43,7 +43,7 @@ sudo docker container prune
 *en construicción*
 
 ## Diagrama de la solución
-
+hola
 ```mermaid
 flowchart TD
     A[Christmas] -->|Get money| B(Go shopping)
