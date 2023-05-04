@@ -47,6 +47,6 @@ sudo docker container prune
 ```mermaid
 flowchart TD
     A[Base de Datos] -->|Entrega datos|C{Rest Api}
-    C --> c{App}
+    C --> App
 
 ```
