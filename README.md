@@ -57,15 +57,7 @@ API
 def doGet(request, session):
 	import json
 	
-	#params = request['params']
-	#if False:
-			#return {'msg':u'La petición no contenía todos los parámetros necesarios.'}
-	#id = params['id']
-	#url = params['url']
-	#descripcion = params['descripcion']
-	#tstamp = params['tstamp']
 	#SELECT id, url, descripcion, tstamp, usuario, estado FROM mapa_id_url;
-	#queryParams ={"id": id,"url": url,"descripcion": descripcion,"tstamp": tstamp}
 	
 	cities = system.db.runNamedQuery("mapa/select")
 	
@@ -73,15 +65,6 @@ def doGet(request, session):
 		for col in range(cities.getColumnCount()):
 			print cities.getValueAt(row , col);
 		return{'json': cities}
-	#if 
-			#return {
-					#'response':json.dumps(params, indent=4)
-					#'response' : queryParams
-			#}
-	#else:
-		#return {
-				#'response' : {'msg': u'Algo ocurrió inesperado'}
-			#}
 ```
 SELECT
 
