@@ -76,5 +76,5 @@ SELECT mapa_id_url.id,
   mapa_id_url.usuario,
   mapa_id_url.estado
 FROM mapa_id_url
-WHERE mapa_id_url.id = 10
+WHERE mapa_id_url.id in (1)
 ```
