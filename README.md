@@ -50,3 +50,49 @@ flowchart TD
     C --> App
 
 ```
+Creacion de api con select y filtrado por id 
+
+
+API
+```
+def doGet(request, session):
+	import json
+	
+	#params = request['params']
+	#if False:
+			#return {'msg':u'La petición no contenía todos los parámetros necesarios.'}
+	#id = params['id']
+	#url = params['url']
+	#descripcion = params['descripcion']
+	#tstamp = params['tstamp']
+	#SELECT id, url, descripcion, tstamp, usuario, estado FROM mapa_id_url;
+	#queryParams ={"id": id,"url": url,"descripcion": descripcion,"tstamp": tstamp}
+	
+	cities = system.db.runNamedQuery("mapa/select")
+	
+	for row in range(cities.getRowCount()):
+		for col in range(cities.getColumnCount()):
+			print cities.getValueAt(row , col);
+		return{'json': cities}
+	#if 
+			#return {
+					#'response':json.dumps(params, indent=4)
+					#'response' : queryParams
+			#}
+	#else:
+		#return {
+				#'response' : {'msg': u'Algo ocurrió inesperado'}
+			#}
+```
+SELECT
+
+```
+SELECT mapa_id_url.id,
+  mapa_id_url.url,
+  mapa_id_url.descripcion,
+  mapa_id_url.tstamp,
+  mapa_id_url.usuario,
+  mapa_id_url.estado
+FROM mapa_id_url
+WHERE mapa_id_url.id = 10
+```
