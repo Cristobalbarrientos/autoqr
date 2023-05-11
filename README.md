@@ -57,7 +57,7 @@ API
 def doGet(request, session):
 	import json
 	
-	#SELECT id, url, descripcion, tstamp, usuario, estado FROM mapa_id_url;
+	#SELECT id, url, tstamp, estado, descripcion, usuario  FROM mapa_id_url WHERE id = 2;
 	
 	cities = system.db.runNamedQuery("mapa/select")
 	
