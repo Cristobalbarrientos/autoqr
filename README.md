@@ -65,6 +65,15 @@ def doGet(request, session):
 		for col in range(cities.getColumnCount()):
 			print cities.getValueAt(row , col);
 		return{'json': cities}
+
+  if system.db.runNamedQuery("mapa/seleccionar mapa", queryParams):
+      return {
+					   'json' : {'msg': u'Ocurrió algo inesperado, no se encontro el ID consultado'}
+				    }
+	else:
+		return {
+					   'json' : cities
+				    }
 ```
 SELECT
 
